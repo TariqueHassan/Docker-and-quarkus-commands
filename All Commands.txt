@@ -1,0 +1,162 @@
+
+
+
+
+//***********Docker***********//
+
+What is docker?
+a platform for building, running, and shipping applications so the application you have developed works and functions the same way on other machines as it works on your machine. 
+
+application works on my developing machine but doesn't work on other machines.
+
+container: isolated environment for running an application
+
+architecture: client server architecture
+
+
+linux commands:
+docker pull/run ubuntu ......... docker will start the container with this image if we have this image locally, otherwise download it.   
+docker run -it ubuntu .... in this container, we load the ubuntu image locally
+echo hello
+whoami	
+echo $0 ...shows the location of current program
+history ... shows the history of commands executed so far
+!2 ... executes the command no. 2 in the history
+
+
+package managers:
+apt ... advanced package tool
+apt list
+apt install nano ... if you get error unable to locate package nano, that means it's not in package database, so you need to apt update it
+apt update ... to update package database, then re-run the above command
+nano ... it should open a text editor now...
+apt remove nano
+
+
+navigating the file system:
+pwd
+ls
+ls -l
+
+// to create docker image
+docker build -t hello-docker .
+docker images	... shows all images on current system
+docker run hello-docker ...to run the image hello-docker
+
+docker run -it ubuntu... loads the ubuntu image in the container.
+
+// to create docker container
+sudo docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=coraldraw" mysql
+
+// to start/stop docker container
+sudo dock stop/start container_name
+
+sudo docker inspect container_name
+sudo docker inspect test-mysql
+
+// to run image on another port
+sudo docker run -p6000:6379 redis
+sudo docker run -p<new-port-number>:<previous-port-number> image-name
+
+sudo docker exec -it container-name/id bash
+sudo docker rm container-name/id ....to remove container
+sudo docker rmi image-id
+
+docker run -it --name code-server -p 127.0.0.1:8082:8080 \
+  -v "$HOME/.config:/home/coder/.config" \
+  -v "$PWD:/home/coder/project" \
+  -u "$(id -u):$(id -g)" \
+  -e "DOCKER_USER=$USER" \
+  codercom/code-server:latest
+  
+  docker run -it --name code-server -p 127.0.0.1:8082:8080 \
+  -v "$HOME/.config:/home/coder/.config" \
+  -v /home/bahl/Desktop/hello7:/home/coder/hello8 \
+  -u "$(id -u):$(id -g)" \
+  -e "DOCKER_USER=$USER" \
+  codercom/code-server:latest
+
+apt install default-jdk
+
+
+//**********VueJS************//
+
+npm install -g @vue/cli
+vue --version
+vue create <project_name>
+npm run serve
+
+
+
+
+
+
+
+
+
+
+
+
+//***********Quarkus****************//
+
+
+//to add dependency in quarkus
+./mvnw quarkus:add-extension -Dextensions="hibernate-validator"
+
+// to start quarkus project in debug mode
+./mvnw compile quarkus:dev -Ddebug
+
+
+netstat -anop | grep 8080
+kill -9 <pid>
+
+//to see process on a port
+fuser 8080/tcp 
+// to kill processes on port
+fuser -a -k 8080/tcp
+
+docker --version
+sudo docker ps -a ------ to list images
+sudo docker pull mysql
+sudo docker rm -rf --------
+
+
+// to create docker container
+sudo docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=coraldraw" mysql
+
+// to start/stop docker container
+sudo dock stop/start container_name
+
+sudo docker inspect container_name
+sudo docker inspect test-mysql
+
+
+hibernate-orm-panache
+hibernate-reactive-panache
+ -non blocking and blocking
+
+sudo apt install mysql-client
+
+
+//to enter mysql database
+mysql -uroot -p1234 -h ip_address -Pport
+show databases;
+create database dbname;
+use dbname;
+
+create table tablename;
+
+
+
+//intellij installation command
+sudo snap install intellij-idea-community --classic
+
+localhost:port/q/swagger-ui
+
+
+create table student (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(30) NOT NULL,
+email VARCHAR(30) NOT NULL,
+PRIMARY KEY(id)
+)
